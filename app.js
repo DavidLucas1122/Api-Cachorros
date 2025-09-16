@@ -18,13 +18,22 @@ async function mostrarImagens (){
 
     container.replaceChildren() //Limpar antes de inserir
 
-    urls.forEach(url => {  
+    urls.forEach(url => { 
+        const a = document.createElement("a")
+       
         const img = document.createElement("img")
         img.classList.add('dog')
 
         img.src = url
-
-        container.appendChild(img)
+        a.href = img.src
+        a.appendChild(img)
+        container.appendChild(a)
         
     });
 }
+
+document.getElementById("input").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        mostrarImagens()
+    }
+})
